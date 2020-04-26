@@ -9,7 +9,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    document.title = "Home | React Redux REST API Boilerplate";
+    document.title = "Home | The Beer Bank";
 
     this.state = {
       beer: {},
