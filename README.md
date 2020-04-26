@@ -5,7 +5,7 @@
 Install the dependencies and devDependencies and start the server.
 
 ```sh
-$ git clone git clone https://gitlab.com/M.I.Protick/beerbank.git
+$ git clone git clone https://gitlab.com/MIProtick/beerbank.git
 $ cd BeerBank
 $ npm install
 $ npm start
@@ -22,4 +22,4 @@ $ npm run build
 
 **Hosted App URL** - [Add your published app URL here]
 
-**Build Package** - https://gitlab.com/M.I.Protick/beerbank.git/-/raw/master/dist.zip
+**Build Package** - https://gitlab.com/MIProtick/beerbank.git/-/raw/master/dist.zip
