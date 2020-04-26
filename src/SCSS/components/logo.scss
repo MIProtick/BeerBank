@@ -1,0 +1,17 @@
+.myLogo {
+    text-shadow: 3px 3px 3px black;
+    font-size: 100px;
+    margin-left: 15px;
+}
+
+.myLogo__down {
+    transform: translateX(-1px) translateY(-2px);
+    display: inline-block;
+}
+
+.myLogo__up {
+    transform: translateX(10px);
+    -webkit-transform: rotate(-25deg);
+    z-index: 1;
+    display: inline-block;
+}
