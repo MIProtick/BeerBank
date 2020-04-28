@@ -17,20 +17,20 @@ class Home extends React.Component {
         };
     }
 
-    componentWillMount() {
-        const { dispatch } = this.props;
+    // componentWillMount() {
+    //     const { dispatch } = this.props;
 
-        beerService.getBeers().then((beers) => {
-            dispatch(beerActions.getBeers(beers));
-        });
-    }
+    //     beerService.getBeers().then((beers) => {
+    //         dispatch(beerActions.getBeers(beers));
+    //     });
+    // }
 
-    componentWillReceiveProps(newProps) {
-        this.setState({ ["beer"]: newProps.beer });
-    }
+    // componentWillReceiveProps(newProps) {
+    //     this.setState({ ["beer"]: newProps.beer });
+    // }
 
     render() {
-        const { beer } = this.state;
+        const { beer } = this.props;
 
         return (
             <div className="page">

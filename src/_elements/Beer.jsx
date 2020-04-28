@@ -9,176 +9,33 @@ class Beer extends React.Component {
     }
 
     render() {
-        const beer = this.props.details;
+        const beers = [...this.props.details];
 
-        // const beerList = beer.map(beer => {
-        //    return(
-
-        //    )
-        // });
+        const beerList = beers.map((beer) => {
+            return (
+                beer && (
+                    <Card className="beerCard" key={beer.id}>
+                        <Card.Img variant="top" src={beer.image_url} />
+                        <div className="fvIcon">
+                            <MdGrade className="fvIconMod" />
+                        </div>
+                        <hr />
+                        <Card.Body>
+                            <Card.Title>{beer.name}</Card.Title>
+                            <Card.Text>{beer.tagline}</Card.Text>
+                        </Card.Body>
+                    </Card>
+                )
+            );
+        });
 
         return (
             <div className="beer">
-                {beer && (
+                {
                     <CardDeck>
-                        <div className="beerDeck">
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card className="beerCard">
-                                <Card.Img variant="top" src={beer.image_url} />
-                                <div className="fvIcon">
-                                    <MdGrade className="fvIconMod" />
-                                </div>
-                                <hr />
-                                <Card.Body>
-                                    <Card.Title>{beer.name}</Card.Title>
-                                    <Card.Text>{beer.tagline}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </div>
+                        <div className="beerDeck">{beerList}</div>
                     </CardDeck>
-                )}
+                }
             </div>
         );
     }

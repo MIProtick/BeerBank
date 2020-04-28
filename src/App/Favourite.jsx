@@ -6,46 +6,46 @@ import { Beer, Header } from "./../_elements";
 import { beerActions, beerService } from "./../_factory";
 
 class Favourite extends React.Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    document.title = "Favourite | The Beer Bank";
+        document.title = "Favourite | The Beer Bank";
 
-    this.state = {
-      beer: {},
-    };
-  }
+        this.state = {
+            beer: {},
+        };
+    }
 
-  componentWillMount() {
-    const { dispatch } = this.props;
+    // componentWillMount() {
+    //     const { dispatch } = this.props;
 
-    beerService.getBeers().then((beers) => {
-      dispatch(beerActions.getBeers(beers));
-    });
-  }
+    //     beerService.getBeers().then((beers) => {
+    //         dispatch(beerActions.getBeers(beers));
+    //     });
+    // }
 
-  componentWillReceiveProps(newProps) {
-    this.setState({ ["beer"]: newProps.beer });
-  }
+    // componentWillReceiveProps(newProps) {
+    //     this.setState({ ["beer"]: newProps.beer });
+    // }
 
-  render() {
-    const { beer } = this.state;
+    render() {
+        const { beer } = this.props;
 
-    return (
-      <div className="page">
-        <Header />
-        <h1>Favourite</h1>
-        <Beer details={beer} />
-      </div>
-    );
-  }
+        return (
+            <div className="page">
+                <Header />
+                <h1>Favourite</h1>
+                <Beer details={beer} />
+            </div>
+        );
+    }
 }
 
 function mapStateToProps(state) {
-  const { beer } = state;
-  return {
-    beer,
-  };
+    const { beer } = state;
+    return {
+        beer,
+    };
 }
 
 const connectedFavourite = connect(mapStateToProps)(Favourite);
