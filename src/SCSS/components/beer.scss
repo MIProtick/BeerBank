@@ -17,13 +17,13 @@
     width: 100%;
     align-items: stretch;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     margin: 15px;
 }
 
 .beerCard {
     position: relative;
-    margin: 1rem;
+    margin: 2rem;
     background: linear-gradient(
             to bottom left,
             rgba(50, 50, 200, 0) 10%,
@@ -69,4 +69,17 @@
 
 .card-body * {
     margin: 10px auto;
+}
+
+.fvIcon {
+    position: absolute;
+    bottom: 90%;
+    left: 90%;
+    font-size: 25px;
+}
+
+.fvIconMod {
+    fill: azure;
+    stroke: black;
+    stroke-width: 1;
 }
