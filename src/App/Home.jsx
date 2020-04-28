@@ -31,7 +31,7 @@ class Home extends React.Component {
 
     render() {
         const { beers } = this.props;
-
+        console.log(this.props);
         return (
             <div className="page">
                 <Header />

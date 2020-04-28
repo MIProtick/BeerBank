@@ -6,6 +6,19 @@ const beers = (state = {}, action) => {
                 beers: action.beers,
                 favourite: [],
             };
+        case "ADD_FAVOURITE":
+            return {
+                ...state,
+                favourite: [...state.favourite, action.beers],
+                // favourite: [...state.favourite, action.beers].filter(function(item) {
+                //     return item.name.includes(txt);
+                // }),
+            };
+        case "REMOVE_FAVOURITE":
+            return {
+                ...state,
+                favourite: [...state.favourite],
+            };
         default:
             return {
                 ...state,

@@ -2,10 +2,21 @@ import React from "react";
 import CardDeck from "react-bootstrap/CardDeck";
 import { MdGrade } from "react-icons/md";
 import Card from "react-bootstrap/Card";
+import { favouriteActions } from "./../_factory";
+import { connect } from "react-redux";
 
 class Beer extends React.Component {
     constructor(props) {
         super(props);
+
+        this.handleFavourite = this.handleFavourite.bind(this);
+    }
+
+    handleFavourite(e) {
+        console.log(e.target.parentNode.id.slice(4));
+        this.props.dispatch(
+            favouriteActions.addFavourite(e.target.parentNode.id)
+        );
     }
 
     render() {
@@ -17,7 +28,11 @@ class Beer extends React.Component {
                     <Card className="beerCard" key={beer.id}>
                         <Card.Img variant="top" src={beer.image_url} />
                         <div className="fvIcon">
-                            <MdGrade className="fvIconMod" />
+                            <MdGrade
+                                className="fvIconMod"
+                                id={"beer" + beer.id}
+                                onClick={this.handleFavourite}
+                            />
                         </div>
                         <hr />
                         <Card.Body>
@@ -41,4 +56,11 @@ class Beer extends React.Component {
     }
 }
 
-export default Beer;
+function mapStateToProps(state) {
+    const { beers } = state.beers;
+    return {
+        beers,
+    };
+}
+
+export default connect(mapStateToProps)(Beer);
