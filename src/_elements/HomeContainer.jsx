@@ -5,24 +5,36 @@ class HomeContainer extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            text: "",
+        };
+
         this.handleChange = this.handleChange.bind(this);
     }
-
-    // componentDidMount() {
-    //     this.setState({ ["beer"]: this.props.beer });
-    // }
 
     handleChange(e) {
         const searchVal = e.target.value;
         if (searchVal == null) {
-            console.log(this.props.beer);
+            this.setState({ ["text"]: searchVal });
         } else {
-            console.log(this.props.beer);
+            this.setState({ ["text"]: searchVal });
         }
     }
 
     render() {
-        const { beers } = this.props;
+        //Managing Beer Search
+        let beers = [];
+        if (this.state.text == "") {
+            beers = [...this.props.beers];
+        } else if (this.state.text != "") {
+            let txt = this.state.text;
+            if (beers) {
+                beers = [...this.props.beers].filter(function(item) {
+                    return item.name.includes(txt);
+                });
+            }
+        }
+        //-------------//
         return (
             <div>
                 <div className="homeContainer center">
