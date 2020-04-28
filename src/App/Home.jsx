@@ -13,7 +13,7 @@ class Home extends React.Component {
         document.title = "Home | The Beer Bank";
 
         this.state = {
-            beer: {},
+            beer: [],
         };
     }
 

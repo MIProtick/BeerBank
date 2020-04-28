@@ -5,15 +5,7 @@ class HomeContainer extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            beer: {},
-        };
-
         this.handleChange = this.handleChange.bind(this);
-    }
-
-    componentDidMount() {
-        this.setState({ ["beer"]: this.props.beer });
     }
 
     handleChange(e) {
@@ -26,7 +18,7 @@ class HomeContainer extends Component {
     }
 
     render() {
-        const beer = this.props.beer;
+        const { beer } = this.props;
         return (
             <div>
                 <div className="homeContainer center">
