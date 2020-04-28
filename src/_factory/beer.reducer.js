@@ -1,19 +1,18 @@
-import { beerService } from "./beer.service";
-
-// const { dispatch } = this.props;
-
-// const initState = beerService.getBeers();
-
-const beer = (state = {}, action) => {
+const beers = (state = {}, action) => {
     switch (action.type) {
         case "GET_SINGLE_BEERS":
-            return action.beers;
+            return {
+                ...state,
+                beers: action.beers,
+                favourite: [],
+            };
         default:
             return {
                 ...state,
                 beers: [],
+                favourite: [],
             };
     }
 };
 
-export default beer;
+export default beers;

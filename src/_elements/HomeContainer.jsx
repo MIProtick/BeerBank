@@ -8,6 +8,10 @@ class HomeContainer extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    // componentDidMount() {
+    //     this.setState({ ["beer"]: this.props.beer });
+    // }
+
     handleChange(e) {
         const searchVal = e.target.value;
         if (searchVal == null) {
@@ -18,7 +22,7 @@ class HomeContainer extends Component {
     }
 
     render() {
-        const { beer } = this.props;
+        const { beers } = this.props;
         return (
             <div>
                 <div className="homeContainer center">
@@ -35,7 +39,7 @@ class HomeContainer extends Component {
                     <p>Advanced Search</p>
                 </div>
                 <div>
-                    <Beer details={beer} />
+                    <Beer details={beers} />
                 </div>
             </div>
         );

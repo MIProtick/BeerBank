@@ -12,39 +12,27 @@ class Favourite extends React.Component {
         document.title = "Favourite | The Beer Bank";
 
         this.state = {
-            beer: {},
+            beers: [],
         };
     }
 
-    // componentWillMount() {
-    //     const { dispatch } = this.props;
-
-    //     beerService.getBeers().then((beers) => {
-    //         dispatch(beerActions.getBeers(beers));
-    //     });
-    // }
-
-    // componentWillReceiveProps(newProps) {
-    //     this.setState({ ["beer"]: newProps.beer });
-    // }
-
     render() {
-        const { beer } = this.props;
+        const { beers } = this.props;
 
         return (
             <div className="page">
                 <Header />
                 <h1>Favourite</h1>
-                <Beer details={beer} />
+                <Beer details={beers} />
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { beer } = state;
+    const { beers } = state.beers;
     return {
-        beer,
+        beers,
     };
 }
 

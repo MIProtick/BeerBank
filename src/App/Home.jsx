@@ -13,7 +13,7 @@ class Home extends React.Component {
         document.title = "Home | The Beer Bank";
 
         this.state = {
-            beer: [],
+            beers: [],
         };
     }
 
@@ -30,21 +30,21 @@ class Home extends React.Component {
     // }
 
     render() {
-        const { beer } = this.props;
+        const { beers } = this.props;
 
         return (
             <div className="page">
                 <Header />
-                <HomeContainer beer={beer} />
+                <HomeContainer beers={beers} />
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { beer } = state;
+    const { beers } = state.beers;
     return {
-        beer,
+        beers,
     };
 }
 
