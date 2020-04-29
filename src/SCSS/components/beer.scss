@@ -80,6 +80,19 @@
 
 .fvIconMod {
     fill: azure;
-    stroke: black;
+    stroke: rgba(20, 10, 30, 1);
     stroke-width: 1;
+}
+
+.fvSelected {
+    fill: rgba(20, 10, 30, 1);
+}
+
+.fvCard {
+    background: linear-gradient(
+            to bottom left,
+            rgba(50, 50, 200, 0) 10%,
+            rgba(50, 50, 200, 0.3) 100%
+        ),
+        #fff;
 }

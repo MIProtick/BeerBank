@@ -17,7 +17,9 @@ const beers = (state = {}, action) => {
         case "REMOVE_FAVOURITE":
             return {
                 ...state,
-                favourite: [...state.favourite],
+                favourite: [...state.favourite].filter(function(item) {
+                    return !item.includes(action.beers);
+                }),
             };
         default:
             return {

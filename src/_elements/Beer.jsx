@@ -13,35 +13,60 @@ class Beer extends React.Component {
     }
 
     handleFavourite(e) {
-        console.log(e.target.parentNode.id.slice(4));
-        this.props.dispatch(
-            favouriteActions.addFavourite(e.target.parentNode.id)
-        );
+        console.log(e.target);
+        if (e.target.parentNode.id != "") {
+            if (this.props.favourite.includes(e.target.parentNode.id)) {
+                this.props.dispatch(
+                    favouriteActions.removeFavourite(e.target.parentNode.id)
+                );
+            } else {
+                this.props.dispatch(
+                    favouriteActions.addFavourite(e.target.parentNode.id)
+                );
+            }
+        }
     }
 
     render() {
-        const beers = [...this.props.details];
-
+        // console.log(this.props);
+        const { favourite } = this.props;
+        const beers = [...this.props.auctioned];
         const beerList = beers.map((beer) => {
-            return (
-                beer && (
-                    <Card className="beerCard" key={beer.id}>
-                        <Card.Img variant="top" src={beer.image_url} />
-                        <div className="fvIcon">
-                            <MdGrade
-                                className="fvIconMod"
-                                id={"beer" + beer.id}
-                                onClick={this.handleFavourite}
-                            />
-                        </div>
-                        <hr />
-                        <Card.Body>
-                            <Card.Title>{beer.name}</Card.Title>
-                            <Card.Text>{beer.tagline}</Card.Text>
-                        </Card.Body>
-                    </Card>
-                )
-            );
+            return favourite.includes("beer" + beer.id)
+                ? beer && (
+                      <Card className="beerCard fvCard" key={beer.id}>
+                          <Card.Img variant="top" src={beer.image_url} />
+                          <div className="fvIcon">
+                              <MdGrade
+                                  className="fvIconMod fvSelected"
+                                  id={"beer" + beer.id}
+                                  onClick={this.handleFavourite}
+                              />
+                          </div>
+                          <hr />
+                          <Card.Body>
+                              <Card.Title>{beer.name}</Card.Title>
+                              <Card.Text>{beer.tagline}</Card.Text>
+                          </Card.Body>
+                      </Card>
+                  )
+                : beer && (
+                      <Card className="beerCard" key={beer.id}>
+                          <Card.Img variant="top" src={beer.image_url} />
+                          <div className="fvIcon">
+                              <MdGrade
+                                  className="fvIconMod"
+                                  id={"beer" + beer.id}
+                                  onClick={this.handleFavourite}
+                              />
+                          </div>
+                          <hr />
+                          <Card.Body>
+                              <Card.Title>{beer.name}</Card.Title>
+                              <Card.Text>{beer.tagline}</Card.Text>
+                          </Card.Body>
+                      </Card>
+                  );
         });
 
         return (
@@ -57,9 +82,10 @@ class Beer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { beers } = state.beers;
+    const { beers, favourite } = state.beers;
     return {
         beers,
+        favourite,
     };
 }
 

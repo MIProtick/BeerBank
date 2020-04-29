@@ -17,22 +17,35 @@ class Favourite extends React.Component {
     }
 
     render() {
-        const { beers } = this.props;
+        const { beers, favourite } = this.props;
+
+        const favList = [...beers].filter(function(item) {
+            return favourite.includes("beer" + item.id);
+        });
+
+        // const favList = [...beers].map((item) => {
+        //     if (favourite.includes("beer" + item.id)) {
+        //         return item;
+        //     }
+        // });
+        console.log("favList");
+        console.log(favList);
 
         return (
             <div className="page">
                 <Header />
                 <h1>Favourite</h1>
-                <Beer details={beers} />
+                <Beer auctioned={favList} />
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { beers } = state.beers;
+    const { beers, favourite } = state.beers;
     return {
         beers,
+        favourite,
     };
 }
 

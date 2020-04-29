@@ -51,7 +51,7 @@ class HomeContainer extends Component {
                     <p>Advanced Search</p>
                 </div>
                 <div>
-                    <Beer details={beers} />
+                    <Beer auctioned={beers} />
                 </div>
             </div>
         );
