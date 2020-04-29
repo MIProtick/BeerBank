@@ -1,25 +1,25 @@
 *,
 *:before,
 *:after {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  line-height: 20px;
-  font-size: 16px;
+    line-height: 20px;
+    font-size: 16px;
 }
 
 img {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .favnav a {
-  color: rgba($color: #fff, $alpha: 0.5);
-  mix-blend-mode: color-dodge;
+    color: rgba($color: #fff, $alpha: 0.5);
+    mix-blend-mode: color-dodge;
 }
 
 header a {
-  display: inline-block;
-  margin: 10px 15px;
+    display: inline-block;
+    margin: 10px 15px;
 }

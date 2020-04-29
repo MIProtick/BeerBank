@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import CardDeck from "react-bootstrap/CardDeck";
 import { MdGrade } from "react-icons/md";
 import Card from "react-bootstrap/Card";
 import { favouriteActions } from "./../_factory";
 import { connect } from "react-redux";
+import Modal from "react-modal";
+import ModalView from "./ModalView";
 
 class Beer extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            modalIsOpen: false,
+        };
+
         this.handleFavourite = this.handleFavourite.bind(this);
+        this.handleModalOpen = this.handleModalOpen.bind(this);
+        this.handleModalClose = this.handleModalClose.bind(this);
+
+        Modal.setAppElement("#app");
+    }
+
+    handleModalOpen(e) {
+        if (!e.target.parentNode.id) {
+            this.setState({ ["modalIsOpen"]: true });
+        }
+    }
+
+    handleModalClose() {
+        this.setState({ ["modalIsOpen"]: false });
     }
 
     handleFavourite(e) {
@@ -28,13 +48,20 @@ class Beer extends React.Component {
     }
 
     render() {
+        const { modalIsOpen } = this.state;
+
         // console.log(this.props);
         const { favourite } = this.props;
         const beers = [...this.props.auctioned];
+        //Dynamic beer list
         const beerList = beers.map((beer) => {
             return favourite.includes("beer" + beer.id)
                 ? beer && (
-                      <Card className="beerCard fvCard" key={beer.id}>
+                      <Card
+                          onClick={this.handleModalOpen}
+                          className="beerCard fvCard"
+                          key={beer.id}
+                      >
                           <Card.Img variant="top" src={beer.image_url} />
                           <div className="fvIcon">
                               <MdGrade
@@ -51,7 +78,11 @@ class Beer extends React.Component {
                       </Card>
                   )
                 : beer && (
-                      <Card className="beerCard" key={beer.id}>
+                      <Card
+                          onClick={this.handleModalOpen}
+                          className="beerCard"
+                          key={beer.id}
+                      >
                           <Card.Img variant="top" src={beer.image_url} />
                           <div className="fvIcon">
                               <MdGrade
@@ -71,11 +102,21 @@ class Beer extends React.Component {
 
         return (
             <div className="beer">
-                {
-                    <CardDeck>
-                        <div className="beerDeck">{beerList}</div>
-                    </CardDeck>
-                }
+                <CardDeck>
+                    <div className="beerDeck">{beerList}</div>
+                </CardDeck>
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={this.handleModalClose}
+                    style={{
+                        overlay: {
+                            backgroundColor: "rgba(0, 0, 0, 0.75)",
+                        },
+                    }}
+                    className="myModal"
+                >
+                    <ModalView />
+                </Modal>
             </div>
         );
     }
