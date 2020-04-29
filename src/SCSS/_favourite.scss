@@ -1,0 +1,16 @@
+.favouriteTitle {
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.favouriteTitle * {
+    margin: 0;
+    padding: 0;
+}
+
+.favouriteTitle p {
+    text-decoration: underline;
+    text-decoration-color: rgba($color: #000000, $alpha: 0.5);
+    margin-top: 5px;
+    cursor: pointer;
+}

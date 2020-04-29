@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Router, Route, Switch, NavLink } from "react-router-dom";
 import { Beer, Header } from "./../_elements";
-import { beerActions, beerService } from "./../_factory";
+import { favouriteActions } from "./../_factory";
 
 class Favourite extends React.Component {
     constructor(props) {
@@ -14,6 +14,13 @@ class Favourite extends React.Component {
         this.state = {
             beers: [],
         };
+
+        this.clearFavoutite = this.clearFavoutite.bind(this);
+    }
+
+    clearFavoutite(e) {
+        console.log(e.target.value);
+        this.props.dispatch(favouriteActions.clearFavourite(0));
     }
 
     render() {
@@ -23,18 +30,13 @@ class Favourite extends React.Component {
             return favourite.includes("beer" + item.id);
         });
 
-        // const favList = [...beers].map((item) => {
-        //     if (favourite.includes("beer" + item.id)) {
-        //         return item;
-        //     }
-        // });
-        console.log("favList");
-        console.log(favList);
-
         return (
             <div className="page">
                 <Header />
-                <h1>Favourite</h1>
+                <div className="favouriteTitle">
+                    <h1>Your Favourites</h1>
+                    <p onClick={this.clearFavoutite}>Clear Favourites</p>
+                </div>
                 <Beer auctioned={favList} />
             </div>
         );

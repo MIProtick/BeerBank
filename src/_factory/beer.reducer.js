@@ -21,6 +21,11 @@ const beers = (state = {}, action) => {
                     return !item.includes(action.beers);
                 }),
             };
+        case "CLEAR_FAVOURITE":
+            return {
+                ...state,
+                favourite: [],
+            };
         default:
             return {
                 ...state,

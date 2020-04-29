@@ -40,17 +40,17 @@
     text-align: center;
     padding: 15px 5px;
     -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .beerCard:hover {
-    transform: scale(1.03);
-    background: linear-gradient(
-            to bottom left,
-            rgba(50, 50, 200, 0) 10%,
-            rgba(50, 50, 200, 0.2) 100%
-        ),
-        #fff;
+    transform: scale(1.02);
+    // background: linear-gradient(
+    //         to bottom left,
+    //         rgba(50, 50, 200, 0) 10%,
+    //         rgba(50, 50, 200, 0.2) 100%
+    //     ),
+    //     #fff;
 }
 
 .beerCard img {
@@ -92,7 +92,7 @@
     background: linear-gradient(
             to bottom left,
             rgba(50, 50, 200, 0) 10%,
-            rgba(50, 50, 200, 0.3) 100%
+            rgba(50, 50, 200, 0.25) 100%
         ),
         #fff;
 }
