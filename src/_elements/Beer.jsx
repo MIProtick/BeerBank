@@ -13,6 +13,7 @@ class Beer extends React.Component {
 
         this.state = {
             modalIsOpen: false,
+            passid: null,
         };
 
         this.handleFavourite = this.handleFavourite.bind(this);
@@ -22,18 +23,18 @@ class Beer extends React.Component {
         Modal.setAppElement("#app");
     }
 
-    handleModalOpen(e) {
+    handleModalOpen(e, i) {
+        // console.log(i);
         if (!e.target.parentNode.id) {
-            this.setState({ ["modalIsOpen"]: true });
+            this.setState({ ["modalIsOpen"]: true, ["passid"]: i });
         }
     }
 
     handleModalClose() {
-        this.setState({ ["modalIsOpen"]: false });
+        this.setState({ ["modalIsOpen"]: false, ["passid"]: null });
     }
 
     handleFavourite(e) {
-        console.log(e.target);
         if (e.target.parentNode.id != "") {
             if (this.props.favourite.includes(e.target.parentNode.id)) {
                 this.props.dispatch(
@@ -49,7 +50,7 @@ class Beer extends React.Component {
 
     render() {
         const { modalIsOpen } = this.state;
-
+        console.log(this.state.passid);
         // console.log(this.props);
         const { favourite } = this.props;
         const beers = [...this.props.auctioned];
@@ -58,9 +59,10 @@ class Beer extends React.Component {
             return favourite.includes("beer" + beer.id)
                 ? beer && (
                       <Card
-                          onClick={this.handleModalOpen}
+                          onClick={(e) => this.handleModalOpen(e, beer.id)}
                           className="beerCard fvCard"
                           key={beer.id}
+                          id={"" + beer.id}
                       >
                           <Card.Img variant="top" src={beer.image_url} />
                           <div className="fvIcon">
@@ -79,9 +81,10 @@ class Beer extends React.Component {
                   )
                 : beer && (
                       <Card
-                          onClick={this.handleModalOpen}
+                          onClick={(e) => this.handleModalOpen(e, beer.id)}
                           className="beerCard"
                           key={beer.id}
+                          id={"" + beer.id}
                       >
                           <Card.Img variant="top" src={beer.image_url} />
                           <div className="fvIcon">
@@ -115,7 +118,7 @@ class Beer extends React.Component {
                     }}
                     className="myModal"
                 >
-                    <ModalView />
+                    <ModalView id={this.state.passid} />
                 </Modal>
             </div>
         );
