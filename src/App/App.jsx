@@ -5,6 +5,7 @@ import { beerActions, beerService } from "./../_factory";
 import { history } from "../_factory";
 import { Home } from "./Home";
 import { Favourite } from "./Favourite";
+import { Advance } from "./Advance";
 
 class App extends React.Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/favourite" component={Favourite} />
+                        <Route exact path="/advance" component={Advance} />
                         <Route component={Home} />
                     </Switch>
                 </Router>

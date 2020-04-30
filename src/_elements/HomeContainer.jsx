@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Beer from "./Beer";
+import { Link } from "react-router-dom";
 
 class HomeContainer extends Component {
     constructor(props) {
@@ -48,7 +49,16 @@ class HomeContainer extends Component {
                             onChange={this.handleChange}
                         />
                     </form>
-                    <p>Advanced Search</p>
+                    <p>
+                        <Link
+                            exact={true}
+                            to="/advance"
+                            style={{ color: "white" }}
+                        >
+                            {" "}
+                            Advanced Search{" "}
+                        </Link>{" "}
+                    </p>
                 </div>
                 <div>
                     <Beer auctioned={beers} />
