@@ -21,7 +21,8 @@ class Advance extends React.Component {
     handleEntry(e) {
         const showData = [...this.props.beers].filter;
         if (e.target.value) {
-            let data = parseInt(e.target.value);
+            let data = Number(e.target.value);
+            console.log(data, e.target.parentNode.id);
             if (data) {
                 switch (e.target.parentNode.id) {
                     case "advancedSearch1__mxibu":
@@ -104,7 +105,7 @@ class Advance extends React.Component {
                                 onChange={this.handleEntry}
                             />
                         </div>
-                        <div className="advancedSearch1__mnibu">
+                        <div id="advancedSearch1__mnibu">
                             <p>Min IBU</p>
                             <input
                                 type="text"
@@ -112,7 +113,7 @@ class Advance extends React.Component {
                                 onChange={this.handleEntry}
                             />
                         </div>
-                        <div className="advancedSearch1__mxabv">
+                        <div id="advancedSearch1__mxabv">
                             <p style={{ textAlign: "center" }}>Max ABV</p>
                             <input
                                 type="text"
@@ -120,7 +121,7 @@ class Advance extends React.Component {
                                 onChange={this.handleEntry}
                             />
                         </div>
-                        <div className="advancedSearch1__minabv">
+                        <div id="advancedSearch1__minabv">
                             <p>Min ABV</p>
                             <input
                                 type="text"
@@ -130,7 +131,7 @@ class Advance extends React.Component {
                         </div>
                     </div>
 
-                    <div className="row1" id="advancedSearch2">
+                    <div id="row1" id="advancedSearch2">
                         <div id="advancedSearch2__mxebc">
                             <p style={{ textAlign: "center" }}>Max EBC</p>
                             <input
@@ -139,7 +140,7 @@ class Advance extends React.Component {
                                 onChange={this.handleEntry}
                             />
                         </div>
-                        <div className="advancedSearch2__mnebc">
+                        <div id="advancedSearch2__mnebc">
                             <p>Min EBC</p>
                             <input
                                 type="text"
@@ -147,11 +148,11 @@ class Advance extends React.Component {
                                 onChange={this.handleEntry}
                             />
                         </div>
-                        <div className="advancedSearch2__brewedB">
+                        <div id="advancedSearch2__brewedB">
                             <p style={{ textAlign: "center" }}>Brewed before</p>
                             <input type="text" name="brewedB" />
                         </div>
-                        <div className="advancedSearch2__brewedA">
+                        <div id="advancedSearch2__brewedA">
                             <p>Brewed After</p>
                             <input type="text" name="brewedA" />
                         </div>
