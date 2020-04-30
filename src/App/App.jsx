@@ -13,6 +13,7 @@ class App extends React.Component {
         document.title = "The Beer Bank";
     }
 
+    //Data's bee mounted only ones
     componentWillMount() {
         const { dispatch } = this.props;
 

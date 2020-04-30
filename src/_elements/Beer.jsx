@@ -50,8 +50,7 @@ class Beer extends React.Component {
 
     render() {
         const { modalIsOpen } = this.state;
-        console.log(this.state.passid);
-        // console.log(this.props);
+        // data fetching from props
         const { favourite } = this.props;
         const beers = [...this.props.auctioned];
         //Dynamic beer list

@@ -55,9 +55,8 @@ class HomeContainer extends Component {
                             to="/advance"
                             style={{ color: "white" }}
                         >
-                            {" "}
-                            Advanced Search{" "}
-                        </Link>{" "}
+                            Advanced Search
+                        </Link>
                     </p>
                 </div>
                 <div>
