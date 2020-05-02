@@ -27,10 +27,18 @@ class App extends React.Component {
             <div>
                 <Router history={history}>
                     <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/favourite" component={Favourite} />
-                        <Route exact path="/advance" component={Advance} />
-                        <Route component={Home} />
+                        <Route exact={true} path="/" component={Home} />
+                        <Route
+                            exact={true}
+                            path="/favourite"
+                            component={Favourite}
+                        />
+                        <Route
+                            exact={true}
+                            path="/advance"
+                            component={Advance}
+                        />
+                        <Route exact={true} component={Home} />
                     </Switch>
                 </Router>
             </div>

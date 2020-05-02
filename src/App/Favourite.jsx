@@ -19,8 +19,11 @@ class Favourite extends React.Component {
     }
 
     clearFavoutite(e) {
-        console.log(e.target.value);
-        this.props.dispatch(favouriteActions.clearFavourite(0));
+        var conf = confirm("Do you really want clear all your Favourites?");
+        if (conf) {
+            this.props.dispatch(favouriteActions.clearFavourite(0));
+        }
+        // console.log(e.target.value);
     }
 
     render() {
@@ -30,6 +33,13 @@ class Favourite extends React.Component {
             return favourite.includes("beer" + item.id);
         });
 
+        const showFav =
+            favList.length != 0 ? (
+                <Beer auctioned={favList} />
+            ) : (
+                <div className="noFav">No beer to show as favourite</div>
+            );
+
         return (
             <div className="page">
                 <Header />
@@ -37,7 +47,7 @@ class Favourite extends React.Component {
                     <h1>Your Favourites</h1>
                     <p onClick={this.clearFavoutite}>Clear Favourites</p>
                 </div>
-                <Beer auctioned={favList} />
+                {showFav}
             </div>
         );
     }

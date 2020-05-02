@@ -4,7 +4,7 @@
     max-width: 100%;
     height: auto;
     max-height: 100%;
-    padding: 15px;
+    padding: 0 15px 15px 15px;
 
     &__image {
         max-height: 500px;
@@ -24,11 +24,9 @@
 .beerCard {
     position: relative;
     margin: 2rem;
-    background: linear-gradient(
-            to bottom left,
+    background: linear-gradient(to bottom left,
             rgba(50, 50, 200, 0) 10%,
-            rgba(50, 50, 200, 0.15) 100%
-        ),
+            rgba(50, 50, 200, 0.15) 100%),
         #fff;
     -webkit-transition: -webkit-box-shadow 0.25s;
     transition: -webkit-box-shadow 0.25s;
@@ -89,10 +87,8 @@
 }
 
 .fvCard {
-    background: linear-gradient(
-            to bottom left,
+    background: linear-gradient(to bottom left,
             rgba(50, 50, 200, 0) 10%,
-            rgba(50, 50, 200, 0.25) 100%
-        ),
+            rgba(50, 50, 200, 0.25) 100%),
         #fff;
 }

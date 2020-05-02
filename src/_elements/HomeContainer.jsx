@@ -25,8 +25,14 @@ class HomeContainer extends Component {
     render() {
         //Managing Beer Search
         let beers = [];
+        let searchFor = "";
         if (this.state.text == "") {
             beers = [...this.props.beers];
+            searchFor = (
+                <div className="containerTitle">
+                    <h4>All Beers</h4>
+                </div>
+            );
         } else if (this.state.text != "") {
             let txt = this.state.text;
             if (beers) {
@@ -34,6 +40,12 @@ class HomeContainer extends Component {
                     return item.name.includes(txt);
                 });
             }
+            searchFor = (
+                <div className="containerTitle">
+                    <h5>Showing result For "{txt}"</h5>
+                    <p>Total item {beers.length}</p>
+                </div>
+            );
         }
         //-------------//
         return (
@@ -50,15 +62,12 @@ class HomeContainer extends Component {
                         />
                     </form>
                     <p>
-                        <Link
-                            exact={true}
-                            to="/advance"
-                            style={{ color: "white" }}
-                        >
+                        <Link to="/advance" style={{ color: "white" }}>
                             Advanced Search
                         </Link>
                     </p>
                 </div>
+                {searchFor}
                 <div>
                     <Beer auctioned={beers} />
                 </div>
