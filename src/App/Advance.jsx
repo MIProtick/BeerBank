@@ -84,6 +84,18 @@ class Advance extends React.Component {
                     ["loop"]: true,
                 });
             }
+        } else if (e.target.value.length > 2) {
+            if (e.target.value[2] != "/") {
+                alert(
+                    "There's been an error in your input.It should be '/ ', not " +
+                        e.target.value[2] +
+                        "."
+                );
+            } else if (e.target.value.length > 7) {
+                alert(
+                    "There's been an error in your input.It should be like- MM/YYYY !!"
+                );
+            }
         }
     }
 
@@ -225,7 +237,7 @@ class Advance extends React.Component {
                     item.ebc >= this.state.minebc &&
                     item.ebc <= this.state.maxebc &&
                     this.comparedate(item.first_brewed, this.state.brewedB) &&
-                    !this.comparedate(item.first_brewed, this.brewedA)
+                    !this.comparedate(item.first_brewed, this.state.brewedA)
                 );
             });
             this.setState({
