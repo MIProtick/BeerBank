@@ -52,63 +52,35 @@ class Advance extends React.Component {
                         "."
                 );
             } else if (e.target.value.length < 7) {
-                if (e.target.parentNode.id == "advancedSearch2__brewedB") {
-                    if (
-                        this.state.brewedB !=
-                        Date.parse(
-                            "" +
-                                new Date().getMonth() +
-                                "/" +
-                                new Date().getDate() +
-                                "/" +
-                                new Date().getFullYear()
-                        )
-                    ) {
-                        this.setState({
-                            ...this.state,
-                            ["brewedB"]: Date.parse(
-                                "" +
-                                    new Date().getMonth() +
-                                    "/" +
-                                    new Date().getDate() +
-                                    "/" +
-                                    new Date().getFullYear()
-                            ),
-                            ["loop"]: true,
-                        });
-                    }
-                } else if (
-                    e.target.parentNode.id == "advancedSearch2__brewedA"
-                ) {
-                    if (this.state.brewedA != 0) {
-                        this.setState({
-                            ...this.state,
-                            ["brewedA"]: 0,
-                            ["loop"]: true,
-                        });
-                    }
+                if (e.target.id == "brewedB") {
+                    var defaultDate = Date.parse(
+                        "" +
+                            new Date().getMonth() +
+                            "/" +
+                            new Date().getDate() +
+                            "/" +
+                            new Date().getFullYear()
+                    );
+                } else if (e.target.id == "brewedA") {
+                    var defaultDate = 0;
+                }
+
+                if (this.state.brewedB != defaultDate) {
+                    this.setState({
+                        ...this.state,
+                        [e.target.id]: defaultDate,
+                        ["loop"]: true,
+                    });
                 }
             } else if (e.target.value.length == 7) {
                 let data = e.target.value;
-                if (e.target.parentNode.id == "advancedSearch2__brewedB") {
-                    this.setState({
-                        ...this.state,
-                        ["brewedB"]: Date.parse(
-                            data.slice(0, 3) + "01/" + data.slice(3)
-                        ),
-                        ["loop"]: true,
-                    });
-                } else if (
-                    e.target.parentNode.id == "advancedSearch2__brewedA"
-                ) {
-                    this.setState({
-                        ...this.state,
-                        ["brewedA"]: Date.parse(
-                            data.slice(0, 3) + "01/" + data.slice(3)
-                        ),
-                        ["loop"]: true,
-                    });
-                }
+                this.setState({
+                    ...this.state,
+                    [e.target.id]: Date.parse(
+                        data.slice(0, 3) + "01/" + data.slice(3)
+                    ),
+                    ["loop"]: true,
+                });
             } else if (e.target.value.length > 7) {
                 alert(
                     "There's been an error in your input.It should be like- MM/YYYY !!"
