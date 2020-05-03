@@ -13,6 +13,6 @@ $ npm start
 
 ### Build & Host
 
-**Hosted App URL** - [Add your published app URL here]
+**Hosted App URL** - https://loving-liskov-939491.netlify.app/
 
 **Build Package** - https://gitlab.com/MIProtick/beerbank.git/-/raw/master/dist.zip
