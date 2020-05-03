@@ -15,7 +15,7 @@ class Advance extends React.Component {
             mybeers: [],
             maxibu: Infinity,
             minibu: 0,
-            maxabv: 100.0,
+            maxabv: Infinity,
             minabv: 0.0,
             maxebc: Infinity,
             minebc: 0,
@@ -121,80 +121,28 @@ class Advance extends React.Component {
     handleEntry(e) {
         let data = Number(0 + e.target.value);
         if (data !== NaN) {
-            switch (e.target.parentNode.id) {
-                case "advancedSearch1__mxibu":
-                    if (data === 0) {
-                        this.setState({
-                            ...this.state,
-                            maxibu: Infinity,
-                            ["loop"]: true,
-                        });
-                    } else {
-                        this.setState({
-                            ...this.state,
-                            ["maxibu"]: data,
-                            ["loop"]: true,
-                        });
-                    }
-                    break;
-                case "advancedSearch1__mnibu":
+            if (data === 0) {
+                if (e.target.id.startsWith("max")) {
                     this.setState({
                         ...this.state,
-                        ["minibu"]: data,
+                        [e.target.id]: Infinity,
                         ["loop"]: true,
                     });
-                    break;
-                case "advancedSearch1__mxabv":
-                    if (data === 0) {
-                        this.setState({
-                            ...this.state,
-                            ["maxabv"]: 100.0,
-                            ["loop"]: true,
-                        });
-                    } else {
-                        this.setState({
-                            ...this.state,
-                            ["maxabv"]: data,
-                            ["loop"]: true,
-                        });
-                    }
-                    break;
-                case "advancedSearch1__mnabv":
+                } else {
                     this.setState({
                         ...this.state,
-                        ["minabv"]: data,
+                        [e.target.id]: 0,
                         ["loop"]: true,
                     });
-                    break;
-                case "advancedSearch2__mxebc":
-                    if (data === 0) {
-                        this.setState({
-                            ...this.state,
-                            ["maxebc"]: Infinity,
-                            ["loop"]: true,
-                        });
-                    } else {
-                        this.setState({
-                            ...this.state,
-                            ["maxebc"]: data,
-                            ["loop"]: true,
-                        });
-                    }
-                    break;
-                case "advancedSearch2__mnebc":
-                    this.setState({
-                        ...this.state,
-                        ["minebc"]: data,
-                        ["loop"]: true,
-                    });
-                    break;
+                }
+            } else {
+                this.setState({
+                    ...this.state,
+                    [e.target.id]: data,
+                    ["loop"]: true,
+                });
             }
         } else {
-            // document.getElementById("mnibu").value = e.target.value.slice(
-            //     0,
-            //     -1
-            // );
-            // console.log(typeof e.target.name);
             alert("Something fishy with your input.");
         }
     }
@@ -206,7 +154,7 @@ class Advance extends React.Component {
         if (
             this.state.maxibu == Infinity &&
             this.state.minibu == 0 &&
-            this.state.maxabv == 100.0 &&
+            this.state.maxabv == Infinity &&
             this.state.minabv == 0.0 &&
             this.state.maxebc == Infinity &&
             this.state.minebc == 0 &&
@@ -230,7 +178,7 @@ class Advance extends React.Component {
         } else if (
             (this.state.maxibu != Infinity ||
                 this.state.minibu != 0 ||
-                this.state.maxabv != 100.0 ||
+                this.state.maxabv != Infinity ||
                 this.state.minabv != 0.0 ||
                 this.state.maxebc != Infinity ||
                 this.state.minebc != 0 ||
@@ -288,32 +236,36 @@ class Advance extends React.Component {
                             <p style={{ textAlign: "center" }}>Max IBU</p>
                             <input
                                 type="text"
-                                name="mxibu"
+                                id="maxibu"
                                 onChange={this.handleEntry}
+                                placeholder="0"
                             />
                         </div>
                         <div id="advancedSearch1__mnibu">
                             <p>Min IBU</p>
                             <input
                                 type="text"
-                                name="mnibu"
+                                id="minibu"
                                 onChange={this.handleEntry}
+                                placeholder="0"
                             />
                         </div>
                         <div id="advancedSearch1__mxabv">
                             <p style={{ textAlign: "center" }}>Max ABV</p>
                             <input
                                 type="text"
-                                name="mxabv"
+                                id="maxabv"
                                 onChange={this.handleEntry}
+                                placeholder="0.0"
                             />
                         </div>
                         <div id="advancedSearch1__mnabv">
                             <p>Min ABV</p>
                             <input
                                 type="text"
-                                name="mnabv"
+                                id="minabv"
                                 onChange={this.handleEntry}
+                                placeholder="0.0"
                             />
                         </div>
                     </div>
@@ -323,32 +275,36 @@ class Advance extends React.Component {
                             <p style={{ textAlign: "center" }}>Max EBC</p>
                             <input
                                 type="text"
-                                name="mxebc"
+                                id="maxebc"
                                 onChange={this.handleEntry}
+                                placeholder="0"
                             />
                         </div>
                         <div id="advancedSearch2__mnebc">
                             <p>Min EBC</p>
                             <input
                                 type="text"
-                                name="mnebc"
+                                id="minebc"
                                 onChange={this.handleEntry}
+                                placeholder="0"
                             />
                         </div>
                         <div id="advancedSearch2__brewedB">
                             <p style={{ textAlign: "center" }}>Brewed before</p>
                             <input
                                 type="text"
-                                name="brewedB"
+                                id="brewedB"
                                 onChange={this.handBrewed}
+                                placeholder="MM/YYYY"
                             />
                         </div>
                         <div id="advancedSearch2__brewedA">
                             <p>Brewed After</p>
                             <input
                                 type="text"
-                                name="brewedA"
+                                id="brewedA"
                                 onChange={this.handBrewed}
+                                placeholder="MM/YYYY"
                             />
                         </div>
                     </div>
