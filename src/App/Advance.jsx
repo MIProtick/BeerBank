@@ -122,7 +122,7 @@ class Advance extends React.Component {
     //----------------Update View according to this filter----------------//
 
     componentDidUpdate(prevProps, prevState) {
-        console.log("onUpdate: ", this.state);
+        // console.log("onUpdate: ", this.state);
         if (
             this.state.maxibu == Infinity &&
             this.state.minibu == 0 &&

@@ -53,14 +53,12 @@ class HomeContainer extends Component {
                 <div className="homeContainer center">
                     <h3>The Beer Bank</h3>
                     <h6>YOUR FAVOURITE BEER PROVIDER</h6>
-                    <form>
-                        <input
-                            placeholder="Search for beer name"
-                            type="text"
-                            id="homeSearch"
-                            onChange={this.handleChange}
-                        />
-                    </form>
+                    <input
+                        placeholder="Search for beer name"
+                        type="text"
+                        id="homeSearch"
+                        onChange={this.handleChange}
+                    />
                     <p>
                         <Link to="/advance" style={{ color: "white" }}>
                             Advanced Search
