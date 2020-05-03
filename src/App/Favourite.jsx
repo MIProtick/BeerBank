@@ -23,7 +23,6 @@ class Favourite extends React.Component {
         if (conf) {
             this.props.dispatch(favouriteActions.clearFavourite(0));
         }
-        // console.log(e.target.value);
     }
 
     render() {

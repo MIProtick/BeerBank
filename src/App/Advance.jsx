@@ -19,112 +19,153 @@ class Advance extends React.Component {
             minabv: 0.0,
             maxebc: Infinity,
             minebc: 0,
+            brewedB: Date.parse(
+                "" +
+                    new Date().getMonth() +
+                    "/" +
+                    new Date().getDate() +
+                    "/" +
+                    new Date().getFullYear()
+            ),
+            brewedA: 0,
             loop: false,
         };
 
         this.handleEntry = this.handleEntry.bind(this);
+        this.handBrewed = this.handBrewed.bind(this);
+        this.comparedate = this.comparedate.bind(this);
+    }
+
+    //----------------Handle Brewed------------------//
+
+    comparedate(data, comparingData) {
+        var itemBrewed = Date.parse(data.slice(0, 3) + "01/" + data.slice(3));
+        return itemBrewed < comparingData;
+    }
+
+    handBrewed(e) {
+        if (e.target.value.length == 7 && e.target.value[2] == "/") {
+            let data = e.target.value;
+            if (e.target.parentNode.id == "advancedSearch2__brewedB") {
+                this.setState({
+                    ...this.state,
+                    ["brewedB"]: Date.parse(
+                        data.slice(0, 3) + "01/" + data.slice(3)
+                    ),
+                    ["loop"]: true,
+                });
+            } else if (e.target.parentNode.id == "advancedSearch2__brewedA") {
+                this.setState({
+                    ...this.state,
+                    ["brewedA"]: Date.parse(
+                        data.slice(0, 3) + "01/" + data.slice(3)
+                    ),
+                    ["loop"]: true,
+                });
+            }
+        } else if (e.target.value.length == 0) {
+            if (e.target.parentNode.id == "advancedSearch2__brewedB") {
+                this.setState({
+                    ...this.state,
+                    ["brewedB"]: Date.parse(
+                        "" +
+                            new Date().getMonth() +
+                            "/" +
+                            new Date().getDate() +
+                            "/" +
+                            new Date().getFullYear()
+                    ),
+                    ["loop"]: true,
+                });
+            } else if (e.target.parentNode.id == "advancedSearch2__brewedA") {
+                this.setState({
+                    ...this.state,
+                    ["brewedA"]: 0,
+                    ["loop"]: true,
+                });
+            }
+        }
     }
 
     //---------------Handling data entry-------------//
     handleEntry(e) {
-        if (e.target.value !== "") {
-            let data = Number(e.target.value);
-            if (data) {
-                switch (e.target.parentNode.id) {
-                    case "advancedSearch1__mxibu":
+        let data = Number(0 + e.target.value);
+        if (data !== NaN) {
+            switch (e.target.parentNode.id) {
+                case "advancedSearch1__mxibu":
+                    if (data === 0) {
+                        this.setState({
+                            ...this.state,
+                            maxibu: Infinity,
+                            ["loop"]: true,
+                        });
+                    } else {
                         this.setState({
                             ...this.state,
                             ["maxibu"]: data,
                             ["loop"]: true,
                         });
-                        break;
-                    case "advancedSearch1__mnibu":
+                    }
+                    break;
+                case "advancedSearch1__mnibu":
+                    this.setState({
+                        ...this.state,
+                        ["minibu"]: data,
+                        ["loop"]: true,
+                    });
+                    break;
+                case "advancedSearch1__mxabv":
+                    if (data === 0) {
                         this.setState({
                             ...this.state,
-                            ["minibu"]: data,
+                            ["maxabv"]: 100.0,
                             ["loop"]: true,
                         });
-                        break;
-                    case "advancedSearch1__mxabv":
+                    } else {
                         this.setState({
                             ...this.state,
                             ["maxabv"]: data,
                             ["loop"]: true,
                         });
-                        break;
-                    case "advancedSearch1__mnabv":
+                    }
+                    break;
+                case "advancedSearch1__mnabv":
+                    this.setState({
+                        ...this.state,
+                        ["minabv"]: data,
+                        ["loop"]: true,
+                    });
+                    break;
+                case "advancedSearch2__mxebc":
+                    if (data === 0) {
                         this.setState({
                             ...this.state,
-                            ["minabv"]: data,
+                            ["maxebc"]: Infinity,
                             ["loop"]: true,
                         });
-                        break;
-                    case "advancedSearch2__mxebc":
+                    } else {
                         this.setState({
                             ...this.state,
                             ["maxebc"]: data,
                             ["loop"]: true,
                         });
-                        break;
-                    case "advancedSearch2__mnebc":
-                        this.setState({
-                            ...this.state,
-                            ["minebc"]: data,
-                            ["loop"]: true,
-                        });
-                        break;
-                }
-            } else {
-                alert("Something fishy with your input.");
-            }
-        } else {
-            console.log(typeof e.target.value);
-            switch (e.target.parentNode.id) {
-                case "advancedSearch1__mxibu":
-                    this.setState({
-                        ...this.state,
-                        maxibu: Infinity,
-                        ["loop"]: true,
-                    });
-                    console.log("mxibu", this.state);
-                    break;
-                case "advancedSearch1__mnibu":
-                    this.setState({
-                        ...this.state,
-                        ["minibu"]: 0,
-                        ["loop"]: true,
-                    });
-                    console.log("mnibu");
-                    break;
-                case "advancedSearch1__mxabv":
-                    this.setState({
-                        ...this.state,
-                        ["maxabv"]: 100.0,
-                        ["loop"]: true,
-                    });
-                    break;
-                case "advancedSearch1__mnabv":
-                    this.setState({
-                        ...this.state,
-                        ["minabv"]: 0.0,
-                        ["loop"]: true,
-                    });
-                    break;
-                case "advancedSearch2__mxebc":
-                    this.setState({
-                        ...this.state,
-                        ["maxebc"]: Infinity,
-                        ["loop"]: true,
-                    });
+                    }
                     break;
                 case "advancedSearch2__mnebc":
                     this.setState({
                         ...this.state,
-                        ["minebc"]: 0,
+                        ["minebc"]: data,
                         ["loop"]: true,
                     });
                     break;
             }
+        } else {
+            // document.getElementById("mnibu").value = e.target.value.slice(
+            //     0,
+            //     -1
+            // );
+            // console.log(typeof e.target.name);
+            alert("Something fishy with your input.");
         }
     }
 
@@ -139,6 +180,16 @@ class Advance extends React.Component {
             this.state.minabv == 0.0 &&
             this.state.maxebc == Infinity &&
             this.state.minebc == 0 &&
+            this.state.brewedB ==
+                Date.parse(
+                    "" +
+                        new Date().getMonth() +
+                        "/" +
+                        new Date().getDate() +
+                        "/" +
+                        new Date().getFullYear()
+                ) &&
+            this.state.brewedA == 0 &&
             this.state.loop == true
         ) {
             this.setState({
@@ -152,7 +203,17 @@ class Advance extends React.Component {
                 this.state.maxabv != 100.0 ||
                 this.state.minabv != 0.0 ||
                 this.state.maxebc != Infinity ||
-                this.state.minebc != 0) &&
+                this.state.minebc != 0 ||
+                this.state.brewedB !=
+                    Date.parse(
+                        "" +
+                            new Date().getMonth() +
+                            "/" +
+                            new Date().getDate() +
+                            "/" +
+                            new Date().getFullYear()
+                    ) ||
+                this.state.brewedA != 0) &&
             this.state.loop == true
         ) {
             const mbeers = [...this.props.beers].filter((item) => {
@@ -162,7 +223,9 @@ class Advance extends React.Component {
                     item.ibu >= this.state.minibu &&
                     item.ibu <= this.state.maxibu &&
                     item.ebc >= this.state.minebc &&
-                    item.ebc <= this.state.maxebc
+                    item.ebc <= this.state.maxebc &&
+                    this.comparedate(item.first_brewed, this.state.brewedB) &&
+                    !this.comparedate(item.first_brewed, this.brewedA)
                 );
             });
             this.setState({
@@ -195,7 +258,7 @@ class Advance extends React.Component {
                             <p style={{ textAlign: "center" }}>Max IBU</p>
                             <input
                                 type="text"
-                                name="mxIbu"
+                                name="mxibu"
                                 onChange={this.handleEntry}
                             />
                         </div>
@@ -203,7 +266,7 @@ class Advance extends React.Component {
                             <p>Min IBU</p>
                             <input
                                 type="text"
-                                name="mnIbu"
+                                name="mnibu"
                                 onChange={this.handleEntry}
                             />
                         </div>
@@ -211,15 +274,15 @@ class Advance extends React.Component {
                             <p style={{ textAlign: "center" }}>Max ABV</p>
                             <input
                                 type="text"
-                                name="mxAbv"
+                                name="mxabv"
                                 onChange={this.handleEntry}
                             />
                         </div>
-                        <div id="advancedSearch1__minabv">
+                        <div id="advancedSearch1__mnabv">
                             <p>Min ABV</p>
                             <input
                                 type="text"
-                                name="mnAbv"
+                                name="mnabv"
                                 onChange={this.handleEntry}
                             />
                         </div>
@@ -230,7 +293,7 @@ class Advance extends React.Component {
                             <p style={{ textAlign: "center" }}>Max EBC</p>
                             <input
                                 type="text"
-                                name="mxEbc"
+                                name="mxebc"
                                 onChange={this.handleEntry}
                             />
                         </div>
@@ -244,11 +307,19 @@ class Advance extends React.Component {
                         </div>
                         <div id="advancedSearch2__brewedB">
                             <p style={{ textAlign: "center" }}>Brewed before</p>
-                            <input type="text" name="brewedB" />
+                            <input
+                                type="text"
+                                name="brewedB"
+                                onChange={this.handBrewed}
+                            />
                         </div>
                         <div id="advancedSearch2__brewedA">
                             <p>Brewed After</p>
-                            <input type="text" name="brewedA" />
+                            <input
+                                type="text"
+                                name="brewedA"
+                                onChange={this.handBrewed}
+                            />
                         </div>
                     </div>
                 </div>
