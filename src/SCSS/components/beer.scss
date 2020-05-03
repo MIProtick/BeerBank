@@ -23,7 +23,7 @@
 
 .beerCard {
     position: relative;
-    margin: 2rem;
+    margin: 1.0rem;
     background: linear-gradient(to bottom left,
             rgba(50, 50, 200, 0) 10%,
             rgba(50, 50, 200, 0.15) 100%),
@@ -33,7 +33,7 @@
     transition: box-shadow 0.25s;
     transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
     border-radius: 2px;
-    height: 400px;
+    height: 370px;
     width: 350px;
     text-align: center;
     padding: 15px 5px;

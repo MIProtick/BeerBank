@@ -23,6 +23,10 @@ class HomeContainer extends Component {
     }
 
     render() {
+        const anim = {
+            animationName: "fadein",
+            animationDuration: "1s",
+        };
         //Managing Beer Search
         let beers = [];
         let searchFor = "";
@@ -30,7 +34,7 @@ class HomeContainer extends Component {
             beers = [...this.props.beers];
             searchFor = (
                 <div className="containerTitle">
-                    <h4>All Beers</h4>
+                    <h4 style={anim}>All Beers</h4>
                 </div>
             );
         } else if (this.state.text != "") {
@@ -42,8 +46,10 @@ class HomeContainer extends Component {
             }
             searchFor = (
                 <div className="containerTitle">
-                    <h5>Showing result For "{txt}"</h5>
-                    <p>Total item {beers.length}</p>
+                    <h5 style={anim}>
+                        Showing result For "<span style={anim}>{txt}</span>"
+                    </h5>
+                    <p style={anim}>Total item {beers.length}</p>
                 </div>
             );
         }

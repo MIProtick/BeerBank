@@ -161,6 +161,7 @@ $modal-ul-type: disc;
             border-width: 1px;
             text-align: center;
             font-size: $font-size-small;
+            overflow: hidden;
 
             img {
                 max-height: 80%;

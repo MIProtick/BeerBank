@@ -1,4 +1,4 @@
-# React Redux REST API Boilerplate for BeerBank
+# The Beer Bank (A demo project)
 
 ### Installation
 
@@ -9,13 +9,6 @@ $ git clone git clone https://gitlab.com/MIProtick/beerbank.git
 $ cd BeerBank
 $ npm install
 $ npm start
-```
-
-For production environments...
-
-```sh
-$ npm install
-$ npm run build
 ```
 
 ### Build & Host

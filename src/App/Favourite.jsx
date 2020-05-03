@@ -26,8 +26,14 @@ class Favourite extends React.Component {
     }
 
     render() {
-        const { beers, favourite } = this.props;
+        //-------------Anim---------------
+        const anim = {
+            animationName: "fadein",
+            animationDuration: "1s",
+        };
+        //---------------------------------
 
+        const { beers, favourite } = this.props;
         const favList = [...beers].filter(function(item) {
             return favourite.includes("beer" + item.id);
         });
@@ -36,7 +42,9 @@ class Favourite extends React.Component {
             favList.length != 0 ? (
                 <Beer auctioned={favList} />
             ) : (
-                <div className="noFav">No beer to show as favourite</div>
+                <div className="noFav" style={anim}>
+                    No beer to show as favourite
+                </div>
             );
 
         return (
