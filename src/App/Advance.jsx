@@ -44,53 +44,71 @@ class Advance extends React.Component {
     }
 
     handBrewed(e) {
-        if (e.target.value.length == 7 && e.target.value[2] == "/") {
-            let data = e.target.value;
-            if (e.target.parentNode.id == "advancedSearch2__brewedB") {
-                this.setState({
-                    ...this.state,
-                    ["brewedB"]: Date.parse(
-                        data.slice(0, 3) + "01/" + data.slice(3)
-                    ),
-                    ["loop"]: true,
-                });
-            } else if (e.target.parentNode.id == "advancedSearch2__brewedA") {
-                this.setState({
-                    ...this.state,
-                    ["brewedA"]: Date.parse(
-                        data.slice(0, 3) + "01/" + data.slice(3)
-                    ),
-                    ["loop"]: true,
-                });
-            }
-        } else if (e.target.value.length == 0) {
-            if (e.target.parentNode.id == "advancedSearch2__brewedB") {
-                this.setState({
-                    ...this.state,
-                    ["brewedB"]: Date.parse(
-                        "" +
-                            new Date().getMonth() +
-                            "/" +
-                            new Date().getDate() +
-                            "/" +
-                            new Date().getFullYear()
-                    ),
-                    ["loop"]: true,
-                });
-            } else if (e.target.parentNode.id == "advancedSearch2__brewedA") {
-                this.setState({
-                    ...this.state,
-                    ["brewedA"]: 0,
-                    ["loop"]: true,
-                });
-            }
-        } else if (e.target.value.length > 2) {
+        if (e.target.value.length > 2) {
             if (e.target.value[2] != "/") {
                 alert(
                     "There's been an error in your input.It should be '/ ', not " +
                         e.target.value[2] +
                         "."
                 );
+            } else if (e.target.value.length < 7) {
+                if (e.target.parentNode.id == "advancedSearch2__brewedB") {
+                    if (
+                        this.state.brewedB !=
+                        Date.parse(
+                            "" +
+                                new Date().getMonth() +
+                                "/" +
+                                new Date().getDate() +
+                                "/" +
+                                new Date().getFullYear()
+                        )
+                    ) {
+                        this.setState({
+                            ...this.state,
+                            ["brewedB"]: Date.parse(
+                                "" +
+                                    new Date().getMonth() +
+                                    "/" +
+                                    new Date().getDate() +
+                                    "/" +
+                                    new Date().getFullYear()
+                            ),
+                            ["loop"]: true,
+                        });
+                    }
+                } else if (
+                    e.target.parentNode.id == "advancedSearch2__brewedA"
+                ) {
+                    if (this.state.brewedA != 0) {
+                        this.setState({
+                            ...this.state,
+                            ["brewedA"]: 0,
+                            ["loop"]: true,
+                        });
+                    }
+                }
+            } else if (e.target.value.length == 7) {
+                let data = e.target.value;
+                if (e.target.parentNode.id == "advancedSearch2__brewedB") {
+                    this.setState({
+                        ...this.state,
+                        ["brewedB"]: Date.parse(
+                            data.slice(0, 3) + "01/" + data.slice(3)
+                        ),
+                        ["loop"]: true,
+                    });
+                } else if (
+                    e.target.parentNode.id == "advancedSearch2__brewedA"
+                ) {
+                    this.setState({
+                        ...this.state,
+                        ["brewedA"]: Date.parse(
+                            data.slice(0, 3) + "01/" + data.slice(3)
+                        ),
+                        ["loop"]: true,
+                    });
+                }
             } else if (e.target.value.length > 7) {
                 alert(
                     "There's been an error in your input.It should be like- MM/YYYY !!"
