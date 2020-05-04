@@ -188,12 +188,12 @@ class Advance extends React.Component {
 
     render() {
         //-------------Collecting Beers----------------//
-        let passBeer = <div></div>;
-        if (this.state.mybeers.length) {
-            passBeer = <Beer auctioned={this.state.mybeers} />;
-        } else {
-            passBeer = <div></div>;
-        }
+        let passBeer = this.state.mybeers.length ? (
+            <Beer auctioned={this.state.mybeers} />
+        ) : (
+            <div></div>
+        );
+
         //--------------------------------------------//
         return (
             <div className="page">

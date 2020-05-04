@@ -32,7 +32,7 @@ class HomeContainer extends Component {
             animationName: "fadein",
             animationDuration: "1s",
         };
-        //Managing Beer Search
+        //-----------Managing Beer Search-----------------//
         let beers = [];
         let searchFor = "";
         if (this.state.text == "") {
@@ -56,7 +56,7 @@ class HomeContainer extends Component {
                 </div>
             );
         }
-        //-------------//
+        //-------------------------------------------------//
         return (
             <div>
                 <div className="homeContainer center">

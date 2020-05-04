@@ -12,7 +12,6 @@ class ModalView extends Component {
 
     //--------------Handling Favourite in Modal------------//
     handleFavourite(e) {
-        // console.log(e.target.id, e.target.parentNode.id);
         if (e.target.parentNode.id.startsWith("beer")) {
             if (this.props.favourite.includes(e.target.parentNode.id)) {
                 this.props.dispatch(

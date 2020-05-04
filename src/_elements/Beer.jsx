@@ -32,7 +32,6 @@ class Beer extends React.Component {
                 document.body.scrollHeight * 0.82 &&
             !this.state.sidePop
         ) {
-            console.log("Gotcha!!");
             this.setState({
                 ...this.state,
                 sidePop: true,
@@ -43,7 +42,6 @@ class Beer extends React.Component {
                 document.body.scrollHeight * 0.82 &&
             this.state.sidePop
         ) {
-            console.log("Ooops!!");
             this.setState({ ...this.state, sidePop: false });
         }
     }
