@@ -19,7 +19,7 @@ class HomeContainer extends Component {
     handleScrollInfinite(e) {
         if (
             window.innerHeight + window.pageYOffset >=
-            document.body.scrollHeight * 0.99
+            document.body.scrollHeight * 0.9999995
         ) {
             let val = this.state.beerloop + 1;
             this.setState({
