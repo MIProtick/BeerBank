@@ -8,10 +8,25 @@ class HomeContainer extends Component {
 
         this.state = {
             text: "",
+            beerloop: 1,
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClearText = this.handleClearText.bind(this);
+        this.handleScrollInfinite = this.handleScrollInfinite.bind(this);
+    }
+
+    handleScrollInfinite(e) {
+        if (
+            window.innerHeight + window.pageYOffset >=
+            document.body.scrollHeight
+        ) {
+            let val = this.state.beerloop + 1;
+            this.setState({
+                ...this.state,
+                beerloop: val,
+            });
+        }
     }
 
     handleClearText(e) {
@@ -27,6 +42,14 @@ class HomeContainer extends Component {
         }
     }
 
+    componentDidMount() {
+        window.addEventListener("scroll", this.handleScrollInfinite);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScrollInfinite);
+    }
+
     render() {
         const anim = {
             animationName: "fadein",
@@ -36,7 +59,10 @@ class HomeContainer extends Component {
         let beers = [];
         let searchFor = "";
         if (this.state.text == "") {
-            beers = [...this.props.beers];
+            // beers = [...this.props.beers];
+            for (let i = 1; i <= this.state.beerloop; i++) {
+                beers = [...beers, ...this.props.beers];
+            }
             searchFor = (
                 <div className="containerTitle">
                     <h4 style={anim}>All Beers</h4>
