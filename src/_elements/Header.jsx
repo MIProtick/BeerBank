@@ -8,18 +8,16 @@ class Header extends React.Component {
     }
 
     render() {
-        let countFav;
-
-        if (this.props.favourite.length > 0) {
-            countFav = (
+        let countFav =
+            this.props.favourite.length > 0 ? (
                 <span id="countFav__inner">
                     {" "}
                     {this.props.favourite.length}{" "}
                 </span>
+            ) : (
+                (countFav = <span> </span>)
             );
-        } else {
-            countFav = <span> </span>;
-        }
+
         return (
             <div className="navbar-fixed">
                 <nav>

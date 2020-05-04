@@ -11,6 +11,11 @@ class HomeContainer extends Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleClearText = this.handleClearText.bind(this);
+    }
+
+    handleClearText(e) {
+        this.setState({ ...this.state, text: "" });
     }
 
     handleChange(e) {
@@ -39,11 +44,9 @@ class HomeContainer extends Component {
             );
         } else if (this.state.text != "") {
             let txt = this.state.text;
-            if (beers) {
-                beers = [...this.props.beers].filter(function(item) {
-                    return item.name.includes(txt);
-                });
-            }
+            beers = [...this.props.beers].filter(function(item) {
+                return item.name.includes(txt);
+            });
             searchFor = (
                 <div className="containerTitle">
                     <h5 style={anim}>
@@ -63,9 +66,23 @@ class HomeContainer extends Component {
                         placeholder="Search for beer name"
                         type="text"
                         id="homeSearch"
+                        value={this.state.text}
                         onChange={this.handleChange}
                     />
                     <p>
+                        <span
+                            style={
+                                this.state.text == ""
+                                    ? { display: "none" }
+                                    : {
+                                          marginRight: "20px",
+                                          cursor: "pointer",
+                                      }
+                            }
+                            onClick={this.handleClearText}
+                        >
+                            Clear Search
+                        </span>
                         <Link to="/advance" style={{ color: "white" }}>
                             Advanced Search
                         </Link>
