@@ -105,13 +105,15 @@ class Beer extends React.Component {
         const { favourite } = this.props;
         const beers = [...this.props.auctioned];
         //Dynamic beer list
+        let mykey = 0;
         const beerList = beers.map((beer) => {
+            mykey += 1;
             return favourite.includes("beer" + beer.id)
                 ? beer && (
                       <Card
                           onClick={(e) => this.handleModalOpen(e, beer.id)}
                           className="beerCard fvCard"
-                          key={beer.id}
+                          key={mykey}
                           id={"" + beer.id}
                       >
                           <Card.Img variant="top" src={beer.image_url} />
@@ -133,7 +135,7 @@ class Beer extends React.Component {
                       <Card
                           onClick={(e) => this.handleModalOpen(e, beer.id)}
                           className="beerCard"
-                          key={beer.id}
+                          key={mykey}
                           id={"" + beer.id}
                       >
                           <Card.Img variant="top" src={beer.image_url} />
