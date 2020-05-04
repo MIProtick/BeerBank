@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Router, Route, Switch, NavLink } from "react-router-dom";
 import { Beer, Header } from "./../_elements";
 import { favouriteActions } from "./../_factory";
 
@@ -26,7 +24,7 @@ class Favourite extends React.Component {
     }
 
     render() {
-        //-------------Anim---------------
+        //-------------Anime---------------
         const anim = {
             animationName: "fadein",
             animationDuration: "1s",

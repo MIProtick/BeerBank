@@ -1,9 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Router, Route, Switch, NavLink } from "react-router-dom";
-import { Beer, Header } from "./../_elements";
-import { beerActions, beerService } from "./../_factory";
+import { Header } from "./../_elements";
 import HomeContainer from "./../_elements/HomeContainer";
 
 class Home extends React.Component {
