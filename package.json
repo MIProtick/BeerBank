@@ -1,7 +1,7 @@
 {
-    "name": "RRRB",
+    "name": "BeerBank",
     "version": "1.0.0",
-    "license": "MIT",
+    "license": "Apache 2.0",
     "scripts": {
         "start": "webpack-dev-server --open",
         "build": "webpack --config ./webpack.production.js"
@@ -44,7 +44,7 @@
         "style-loader": "^0.23.1",
         "terser-webpack-plugin": "^2.3.5",
         "webpack": "4.19.1",
-        "webpack-bundle-analyzer": "^2.13.1",
+        "webpack-bundle-analyzer": ">=3.3.2",
         "webpack-cli": "^2.1.4",
         "webpack-dev-server": "^3.1.4",
         "webpack-merge": "^4.1.2"

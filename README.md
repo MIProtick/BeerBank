@@ -1,4 +1,5 @@
-# The Beer Bank (A demo project)
+# The Beer Bank 
+A simple React-Redux demo project.
 
 ### Installation
 
